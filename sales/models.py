@@ -8,7 +8,7 @@ class 아이디(AbstractUser):
 
 
 class Sale(models.Model):
-    
+
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age = models.IntegerField(default=0)
@@ -19,6 +19,6 @@ class Sale(models.Model):
 class Person(models.Model):
     회원 = models.OneToOneField(아이디, on_delete=models.CASCADE)
 
-    # first_name = models.CharField(max_length=30)
-    # last_name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.회원.email
 
