@@ -14,6 +14,8 @@
  
     <h1>이것이 세일 목록들 입니다.</h1>
 
+    <a href="/홈페이지/make">세일 작성하기</a>
+
     {% for 인간 in 사람키 %}
       <div class="세일">
      <a href="/홈페이지/{{인간.pk}}"> {{인간.last_name}}  {{인간.first_name}}   
@@ -22,5 +24,6 @@
       </div>
          <br/>
     {% endfor %}
+
  </body>
  </html>
