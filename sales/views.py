@@ -42,11 +42,44 @@ def 세일_입력(request):
     return render(request, 'newfolder/세일_입력.html', context)
 
 
+
+
 def 세일_업데이트(request, pk):
     사람 =Sale.objects.get(id=pk)
     
     if request.method == "POST":
-        폼=SaleModelForm(request.POST)
+
+        폼=SaleModelForm(request.POST, instance=사람)
+        if 폼.is_valid():  
+                     
+           폼.save()
+
+           return redirect("/홈페이지")
+        
+    else:        
+        폼 =SaleModelForm(instance=사람)
+    context={
+        "사람키":사람,
+        "폼키" : 폼
+    }
+
+    return render(request, 'newfolder/세일_업데이트.html', context)    
+
+
+
+def 세일_지우기(request, pk):
+    사람 =Sale.objects.get(id=pk)
+    사람.delete()
+    return redirect("/홈페이지")
+
+
+
+
+""" def 세일_업데이트(request, pk):
+    사람 =Sale.objects.get(id=pk)
+    
+    if request.method == "POST":
+        폼=SaleForm(request.POST)
         if 폼.is_valid():
             first_name =폼.cleaned_data["first_name"]
             last_name =폼.cleaned_data["last_name"]
@@ -68,7 +101,7 @@ def 세일_업데이트(request, pk):
     }
 
     return render(request, 'newfolder/세일_업데이트.html', context)    
-
+ """
 
 
 """ def 세일_입력(request):
