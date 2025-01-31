@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djangocrm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / '폴더'],
+        'DIRS': [BASE_DIR / ''],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

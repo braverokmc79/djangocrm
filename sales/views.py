@@ -1,14 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import 아이디
+from .models import Sale
 
 
-def 홈페이지(request):
-    #return render(request, 'newfolder/아무거나1.html')
-    드실분=아이디.objects.all()
+def 세일목록(request):
+    사람=Sale.objects.all()
     context={
-        "메뉴명" :"짜장",
-        "가격" : "700원",
-        "손님" : 드실분
+        "사람키" : 사람
     }
-    return render(request, '아무거나2.html',context)
+    return render(request, 'newfolder/세일목록.html',context)
+
+
+def 세일상세(request,pk):
+    return HttpResponse("<h1>여기 상세 정보입니다.</h1>")
