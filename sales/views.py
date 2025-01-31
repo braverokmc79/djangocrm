@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Sale
-
+from .forms import SaleForm
 
 def 세일목록(request):
     사람=Sale.objects.all()
@@ -24,3 +24,11 @@ def 세일상세(request,pk):
 
     #return HttpResponse("<h1>여기 상세 정보입니다.</h1>")
     return render(request, 'newfolder/세일상세.html',context)
+
+
+def 세일_입력(request):
+    print(request.POST)
+    context={
+        "폼키" : SaleForm
+    }
+    return render(request, 'newfolder/세일_입력.html', context)
