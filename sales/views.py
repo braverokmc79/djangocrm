@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from .models import Sale , Person
-from .forms import SaleForm
+from .forms import SaleForm , SaleModelForm
 
 def 세일목록(request):
     사람=Sale.objects.all()
@@ -27,6 +27,22 @@ def 세일상세(request,pk):
 
 
 def 세일_입력(request):
+    폼 =SaleModelForm()
+
+    if request.method == "POST":
+       폼 = SaleModelForm(request.POST)
+    
+       if 폼.is_valid():          
+          폼.save()          
+          return redirect("/홈페이지")
+       
+    context={
+        "폼키" : SaleModelForm
+    }
+    return render(request, 'newfolder/세일_입력.html', context)
+
+
+""" def 세일_입력(request):
     폼 =SaleForm()
     if request.method == "POST":
        print("포스트 메소드로 왔네요")
@@ -51,4 +67,4 @@ def 세일_입력(request):
     context={
         "폼키" : SaleForm
     }
-    return render(request, 'newfolder/세일_입력.html', context)
+    return render(request, 'newfolder/세일_입력.html', context) """
