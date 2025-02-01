@@ -1,25 +1,31 @@
 <html>
  <head>
-   <title>타이틀 넣어주면 되고.. 또.. 뭐...</title>
-   <style>
-      .세일{
-         padding-top:20px;
-         padding-bottom:30px;
-         padding-right:10px;
-         padding-left:10px;
-         background-color :#f5f5f5;
-      }
-   </style>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+      <style type="text/tailwindcss">
+        @theme {
+          --color-clifford: #da373d;
+        }
+      </style>
+    </head>
  </head>
  <body>
  
 
+
+<main class="max-w-7xl mx-auto bg-purple-600  bg-opacity-75 text-white">
 {% block content %}
 
 {% endblock  %} 
+</main>
 
 
 {% include "프로그램.html" %} 
+
+
+
 
  </body>
  </html>
