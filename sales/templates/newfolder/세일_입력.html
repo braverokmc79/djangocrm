@@ -1,15 +1,10 @@
-<html>
- <head>
- </head>
- <body>
- 
-    <h1>세일 입력 페이지</h1>
+{% extends "와꾸.html" %} {% block content %}
 
-   <form method="post">
-      {% csrf_token %}
-      {{폼키.as_p}}
-      <button type="submit">전송</button>
-   </form>
+<h1>세일 입력 페이지</h1>
 
- </body>
- </html>
+<form method="post">
+  {% csrf_token %} {{폼키.as_p}}
+  <button type="submit">전송</button>
+</form>
+
+{% endblock content %}
