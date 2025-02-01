@@ -3,7 +3,11 @@ from django.shortcuts import render , redirect
 from .models import Sale , Person
 from .forms import SaleForm , SaleModelForm
 
-def 세일목록(request):
+
+def 첫화면(request):  
+    return render(request, '첫화면.html')
+
+def 세일목록(request):    
     사람=Sale.objects.all()
     context={
         "사람키" : 사람
