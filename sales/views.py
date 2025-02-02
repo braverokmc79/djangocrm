@@ -1,9 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render , redirect , reverse
 from .models import Sale , Person
-from .forms import SaleForm , SaleModelForm
+from .forms import SaleForm , SaleModelForm , 우리만의UserCreationForm
 from django.views import generic , View
 from django.contrib.auth import logout
+from django.contrib import messages
+
+class 회원가입View(generic.CreateView):
+    template_name = 'registration/회원가입.html'
+    form_class = 우리만의UserCreationForm
+    def get_success_url(self):
+        return reverse("로긴")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "회원가입을 축하합니다! 로그인 후 서비스를 이용하세요.")
+        return response
+
 
 class 첫화면View(generic.TemplateView):
     template_name = '첫화면.html'

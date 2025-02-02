@@ -19,7 +19,7 @@ from django.urls import path
 from django.urls.conf import include
 from sales.views import 첫화면, 첫화면View
 from django.contrib.auth.views import LoginView, LogoutView
-from sales.views import CustomLogoutView
+from sales.views import CustomLogoutView , 회원가입View
 
 
 urlpatterns = [
@@ -28,5 +28,6 @@ urlpatterns = [
     path('홈페이지/', include('sales.urls', namespace='홈페이지')),
     path('로그인/', LoginView.as_view(), name='로긴'),
     path('로그아웃/', CustomLogoutView.as_view(), name='록아웃'),
+    path('회원가입/', 회원가입View.as_view(), name='가입'),
 ]
 
