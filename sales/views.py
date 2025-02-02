@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render , redirect , reverse
 from .models import Sale , Person
 from .forms import SaleForm , SaleModelForm
-from django.views import generic
+from django.views import generic , View
+from django.contrib.auth import logout
 
 class 첫화면View(generic.TemplateView):
     template_name = '첫화면.html'
@@ -111,6 +112,12 @@ def 세일_지우기(request, pk):
     사람.delete()
     return redirect("/홈페이지")
 
+
+
+class CustomLogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('/')
 
 
 
