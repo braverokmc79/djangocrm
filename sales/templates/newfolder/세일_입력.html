@@ -1,10 +1,63 @@
-{% extends "와꾸.html" %} {% block content %}
+{% extends "와꾸.html" %}
+ 
 
-<h1>세일 입력 페이지</h1>
+{% block content %}
 
-<form method="post">
-  {% csrf_token %} {{폼키.as_p}}
-  <button type="submit">전송</button>
-</form>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+
+    <h1 class="text-center text-4xl font-bold mb-15">
+      세일 입력 페이지
+    </h1>
+    
+    <div class="max-w-3xl mx-auto">
+      <div class="">                
+        <div class="mb-4">         
+
+        <form method="post">
+          {% csrf_token %}           
+          {% comment %} {{폼키.as_p}}  {% endcomment %}
+          
+          <div class="w-full flex flex-col">
+            <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
+              <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_last_name">성</label>
+              <div class="col-span-7">{{ 폼키.last_name }}</div>
+            </div>
+          
+            <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
+              <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_first_name">이름</label>
+              <div class="col-span-7">{{ 폼키.first_name }}</div>
+            </div>
+          
+            <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
+              <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_age">나이</label>
+              <div class="col-span-7">{{ 폼키.age }}</div>
+            </div>
+          
+            <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
+              <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_person">Person</label>
+              <div class="col-span-7">{{ 폼키.person }}</div>
+            </div>
+          </div>
+
+          
+        <div class="flex justify-end space-x-4 mt-15">      
+          <button type="submit"
+              class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded cursor-pointer">
+              작성하기
+          </button>
+      </div>
+      </form>        
+      </div>    
+    </div>
+  </div>
+</section>
+
+
 
 {% endblock content %}
+
+
+
+
+
