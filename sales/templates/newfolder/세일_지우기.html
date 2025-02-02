@@ -1,0 +1,11 @@
+{% extends "와꾸.html" %}
+ 
+
+{% block content %}
+<p>정말 지워요?</p>    
+    <form  method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="전송" />
+    </form>
+{% block content %}

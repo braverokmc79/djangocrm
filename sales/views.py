@@ -1,11 +1,20 @@
 from django.http import HttpResponse
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , reverse
 from .models import Sale , Person
 from .forms import SaleForm , SaleModelForm
+from django.views import generic
 
+class 첫화면View(generic.TemplateView):
+    template_name = '첫화면.html'
 
 def 첫화면(request):  
     return render(request, '첫화면.html')
+
+
+class 세일_목록View(generic.ListView):
+    template_name = 'newfolder/세일목록.html'
+    queryset = Sale.objects.all()
+    context_object_name =  "사람키"
 
 def 세일목록(request):    
     사람=Sale.objects.all()
@@ -15,9 +24,14 @@ def 세일목록(request):
     return render(request, 'newfolder/세일목록.html',context)
 
 
-def 세일상세(request,pk):
-    #print(pk)
+class 세일_상세View(generic.DetailView):
+    template_name = 'newfolder/세일상세.html'
+    queryset = Sale.objects.all()
+    context_object_name =  "사람키"
 
+
+
+def 세일상세(request,pk):
     #세일 =Sale.objects.get(id=pk)
     #print("세일 :",세일)
 
@@ -30,6 +44,13 @@ def 세일상세(request,pk):
     return render(request, 'newfolder/세일상세.html',context)
 
 
+
+class 세일_입력View(generic.CreateView):
+    template_name = 'newfolder/세일_입력.html'
+    form_class = SaleModelForm
+    def get_success_url(self):
+        return reverse("홈페이지:목록")
+
 def 세일_입력(request):
     폼 =SaleModelForm()
 
@@ -41,11 +62,18 @@ def 세일_입력(request):
           return redirect("/홈페이지")
        
     context={
-        "폼키" : SaleModelForm
+        "form" : SaleModelForm
     }
     return render(request, 'newfolder/세일_입력.html', context)
 
 
+class 세일_업데이트View(generic.UpdateView):
+      template_name = 'newfolder/세일_업데이트.html'
+      form_class = SaleModelForm
+      queryset = Sale.objects.all()
+      context_object_name =  "사람키"
+      def get_success_url(self):
+        return reverse("홈페이지:목록")
 
 
 def 세일_업데이트(request, pk):
@@ -69,6 +97,13 @@ def 세일_업데이트(request, pk):
 
     return render(request, 'newfolder/세일_업데이트.html', context)    
 
+
+
+class 세일_지우기View(generic.DeleteView):
+      #template_name = 'newfolder/세일_지우기.html'
+      queryset = Sale.objects.all()
+      def get_success_url(self):          
+        return reverse("홈페이지:목록")
 
 
 def 세일_지우기(request, pk):

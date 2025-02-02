@@ -16,27 +16,27 @@
 
         <form method="post">
           {% csrf_token %}           
-          {% comment %} {{폼키.as_p}}  {% endcomment %}
+          {% comment %} {{form.as_p}}  {% endcomment %}
           
           <div class="w-full flex flex-col">
             <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
               <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_last_name">성</label>
-              <div class="col-span-7">{{ 폼키.last_name }}</div>
+              <div class="col-span-7">{{ form.last_name }}</div>
             </div>
           
             <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
               <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_first_name">이름</label>
-              <div class="col-span-7">{{ 폼키.first_name }}</div>
+              <div class="col-span-7">{{ form.first_name }}</div>
             </div>
           
             <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
               <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_age">나이</label>
-              <div class="col-span-7">{{ 폼키.age }}</div>
+              <div class="col-span-7">{{ form.age }}</div>
             </div>
           
             <div class="w-full grid grid-cols-10 gap-4 items-center mb-4">
               <label class="col-span-3 text-gray-700 text-xl font-bold" for="id_person">Person</label>
-              <div class="col-span-7">{{ 폼키.person }}</div>
+              <div class="col-span-7">{{ form.person }}</div>
             </div>
           </div>
 
